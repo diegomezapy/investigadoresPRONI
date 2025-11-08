@@ -1,6 +1,6 @@
 class PresentationController {
     currentSlide: number = 0;
-    totalSlides: number = 9;
+    totalSlides: number = 13;
     isPlaying: boolean = true;
     autoPlayInterval: number | null = null;
     slideDuration: number = 7000; // 7 seconds per slide
@@ -19,9 +19,13 @@ class PresentationController {
     createIndicators() {
         const container = document.getElementById('indicators');
         if (!container) return;
+        // Clear existing indicators before creating new ones
+        container.innerHTML = '';
         for (let i = 0; i < this.totalSlides; i++) {
             const indicator = document.createElement('div');
             indicator.className = 'indicator';
+            indicator.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+            indicator.setAttribute('role', 'button');
             indicator.addEventListener('click', () => this.goToSlide(i));
             container.appendChild(indicator);
         }
@@ -41,7 +45,6 @@ class PresentationController {
             }
         });
 
-        // Pause autoplay on hover over controls to prevent accidental slide changes
         const controls = document.querySelector('.controls');
         let wasPlayingOnHover = false;
         controls?.addEventListener('mouseenter', () => {
@@ -60,7 +63,7 @@ class PresentationController {
     }
 
     startAutoPlay() {
-        if (this.autoPlayInterval) return; // Prevent multiple intervals
+        if (this.autoPlayInterval) return;
         this.isPlaying = true;
         this.updatePlayPauseIcon();
         this.autoPlayInterval = window.setInterval(() => {
@@ -93,6 +96,8 @@ class PresentationController {
         const button = document.getElementById('playPauseBtn');
         if (button) {
             button.classList.toggle('pause', this.isPlaying);
+            button.setAttribute('aria-label', this.isPlaying ? 'Pausar reproducción automática' : 'Reanudar reproducción automática');
+            button.setAttribute('title', this.isPlaying ? 'Pausar' : 'Reanudar');
         }
     }
 
@@ -135,31 +140,32 @@ class PresentationController {
 
         if (!title || !subtitle || !context) return;
         
-        // Reset animations to allow re-triggering
         title.style.animation = 'none';
         subtitle.style.animation = 'none';
         context.style.animation = 'none';
 
-        // Re-trigger animation after a short delay
-        setTimeout(() => {
-            title.style.animation = 'fadeInDown 1s ease 0.5s forwards';
-            subtitle.style.animation = 'fadeInUp 1s ease 0.8s forwards';
-            context.style.animation = 'fadeInUp 1s ease 1.1s forwards';
-        }, 100);
+        // Use requestAnimationFrame to ensure the style reset is applied before re-adding the animation
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                title.style.animation = 'fadeInDown 1s ease 0.5s forwards';
+                subtitle.style.animation = 'fadeInUp 1s ease 0.8s forwards';
+                context.style.animation = 'fadeInUp 1s ease 1.1s forwards';
+            }, 50);
+        });
     }
 
     restartAutoPlay() {
-        if (this.isPlaying) {
-            this.stopAutoPlay();
-            this.startAutoPlay();
-        }
+        this.stopAutoPlay();
+        this.startAutoPlay();
     }
 }
 
-// Initialize the presentation controller
-new PresentationController();
+// Initialize the presentation controller on DOM content loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new PresentationController();
+});
 
-// Prevent default browser scroll on arrow key press
+
 window.addEventListener('keydown', (e: KeyboardEvent) => {
     if(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
         e.preventDefault();

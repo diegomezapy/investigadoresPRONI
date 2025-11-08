@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÍA DEL INVESTIGADOR PARAGUAYO - Radiografía PRONII</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="presentation-container">
+        <div class="slides-wrapper" id="slidesWrapper">
+            <!-- SLIDE 1: Portada -->
+            <section id="slide1" class="slide">
+                <h1>DÍA DEL INVESTIGADOR PARAGUAYO</h1>
+                <div class="subtitle">Radiografía de la comunidad científica registrada en el PRONII</div>
+                <div class="context">Análisis de <strong>1136</strong> currículums normalizados, áreas, trayectorias e idiomas de investigación en Paraguay</div>
+            </section>
+
+            <!-- SLIDE 2: Panorama General -->
+            <section id="slide2" class="slide">
+                <h2>¿Cuántos somos y cómo estamos distribuidos?</h2>
+                <div class="counter-container">
+                    <div>
+                        <div class="counter-main">1136</div>
+                        <div class="counter-label">investigadoras e investigadores registrados</div>
+                    </div>
+                </div>
+                <div class="rings-container">
+                    <div class="ring">
+                        <div class="ring-circle">58,2%</div>
+                        <div>Estado Activo</div>
+                    </div>
+                    <div class="ring">
+                        <div class="ring-circle">66,5%</div>
+                        <div>Edad 35-54 años<br>Mediana: 45 años</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: Equilibrio de Género -->
+            <section id="slide3" class="slide">
+                <h2>¿Hay brecha de género en la ciencia paraguaya?</h2>
+                <div class="gender-container">
+                    <div class="gender-card women">
+                        <i class="fas fa-female"></i>
+                        <div class="percentage">51,4%</div>
+                        <div class="number">584 personas</div>
+                    </div>
+                    <div class="gender-card men">
+                        <i class="fas fa-male"></i>
+                        <div class="percentage">48,6%</div>
+                        <div class="number">552 personas</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: Áreas de Investigación -->
+            <section id="slide4" class="slide">
+                <h2>¿Qué áreas del conocimiento dominan?</h2>
+                <div class="donut-chart">
+                    <svg viewBox="0 0 500 500">
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#E0E0E0" stroke-width="80"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#E91E63" stroke-width="80" 
+                                stroke-dasharray="472 942" stroke-dashoffset="0"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#9C27B0" stroke-width="80" 
+                                stroke-dasharray="327 942" stroke-dashoffset="-472"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#4CAF50" stroke-width="80" 
+                                stroke-dasharray="249 942" stroke-dashoffset="-799"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#FF9800" stroke-width="80" 
+                                stroke-dasharray="228 942" stroke-dashoffset="-1048"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#795548" stroke-width="80" 
+                                stroke-dasharray="226 942" stroke-dashoffset="-1276"/>
+                        <circle cx="250" cy="250" r="150" fill="none" stroke="#607D8B" stroke-width="80" 
+                                stroke-dasharray="11 942" stroke-dashoffset="-1502"/>
+                    </svg>
+                </div>
+                <div class="areas-list">
+                    <div class="area-item">
+                        <div class="area-icon">🏥</div>
+                        <div class="area-text">
+                            <span class="area-name">Ciencias Médicas y de la Salud</span>
+                            <span class="area-percent">31,2%</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div class="area-icon">👥</div>
+                        <div class="area-text">
+                            <span class="area-name">Ciencias Sociales</span>
+                            <span class="area-percent">21,6%</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div class="area-icon">🌿</div>
+                        <div class="area-text">
+                            <span class="area-name">Ciencias Naturales</span>
+                            <span class="area-percent">16,5%</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div class="area-icon">⚙️</div>
+                        <div class="area-text">
+                            <span class="area-name">Ingeniería y Tecnología</span>
+                            <span class="area-percent">15,1%</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div class="area-icon">🌾</div>
+                        <div class="area-text">
+                            <span class="area-name">Ciencias Agrícolas</span>
+                            <span class="area-percent">15,0%</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div class="area-icon">📚</div>
+                        <div class="area-text">
+                            <span class="area-name">Humanidades</span>
+                            <span class="area-percent">0,7%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="key-message">
+                    💡 <strong>ECOSISTEMA FUERTEMENTE INTERDISCIPLINARIO</strong> con peso marcado en salud, ciencias sociales, naturales, agricultura e ingeniería. Baja presencia relativa en humanidades.
+                </div>
+            </section>
+
+            <!-- SLIDE 5: Niveles PRONII -->
+            <section id="slide5" class="slide">
+                <h2>¿Cómo está conformada la comunidad por niveles?</h2>
+                <div class="pyramid">
+                    <div class="pyramid-level level3">
+                        <span>NIVEL III</span>
+                        <span>2,6% (29)</span>
+                    </div>
+                    <div class="pyramid-level level2">
+                        <span>NIVEL II</span>
+                        <span>9,1% (103)</span>
+                    </div>
+                    <div class="pyramid-level level1">
+                        <span>NIVEL I</span>
+                        <span>31,5% (358)</span>
+                    </div>
+                    <div class="pyramid-level candidate">
+                        <span>NIVEL CANDIDATO</span>
+                        <span>56,9% (646)</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px; font-size: 18px; color: var(--dark-gray);">
+                    🔼 Amplia base en formación y consolidación
+                </div>
+            </section>
+
+            <!-- SLIDE 6: Idiomas -->
+            <section id="slide6" class="slide">
+                <h2>¿Estamos preparados para la ciencia global?</h2>
+                <div class="language-container">
+                    <div class="language-main">
+                        <div style="font-size: 60px; margin-bottom: 20px;">🌍</div>
+                        <h3>87,5%</h3>
+                        <p>declara al menos un idioma adicional al español<br><small>(n=1079)</small></p>
+                    </div>
+                    <div style="font-size: 28px; margin: 30px 0;">
+                        <strong>INGLÉS: 77,8% de los registros</strong>
+                    </div>
+                    <div class="language-skills">
+                        <div class="skill-card">
+                            <div style="font-size: 40px;">📖</div>
+                            <div>Lee</div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 82.7%;">82,7%</div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div style="font-size: 40px;">🧠</div>
+                            <div>Comprende</div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 78.2%;">78,2%</div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div style="font-size: 40px;">✍️</div>
+                            <div>Escribe</div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 62.1%;">62,1%</div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div style="font-size: 40px;">🗣️</div>
+                            <div>Habla</div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 54.8%;">54,8%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: Instituciones -->
+            <section id="slide7" class="slide">
+                <h2>¿Dónde se produce el conocimiento?</h2>
+                <div class="institutions-container">
+                    <div class="main-institution">
+                        <div style="font-size: 60px; margin-bottom: 20px;">🎓</div>
+                        <h3>UNIVERSIDAD NACIONAL DE ASUNCIÓN (UNA)</h3>
+                        <div style="font-size: 36px; margin: 15px 0;">~27%</div>
+                        <div>de los registros</div>
+                    </div>
+                    <div class="institutions-grid">
+                        <div class="institution-card">
+                            <div style="font-size: 40px; color: var(--green);">🏛️</div>
+                            <h4>Universidades Públicas Interior</h4>
+                            <p>Presencia creciente en todo el territorio</p>
+                        </div>
+                        <div class="institution-card">
+                            <div style="font-size: 40px; color: var(--purple);">🏢</div>
+                            <h4>Universidades Privadas</h4>
+                            <p>Participación relevante en la red científica</p>
+                        </div>
+                        <div class="institution-card">
+                            <div style="font-size: 40px; color: var(--orange);">🔬</div>
+                            <h4>Centros Especializados</h4>
+                            <p>Salud, Agro, Tecnología</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: Diversidad Temática -->
+            <section id="slide8" class="slide">
+                <h2>¿Qué investigamos los paraguayos?</h2>
+                <div class="themes-grid">
+                    <div class="theme-column">
+                        <h4>🏥 SALUD</h4>
+                        <div class="theme-item">Salud pública</div>
+                        <div class="theme-item">Medicina clínica</div>
+                        <div class="theme-item">Medicina básica</div>
+                    </div>
+                    <div class="theme-column">
+                        <h4>🌿 AMBIENTE</h4>
+                        <div class="theme-item">Biología</div>
+                        <div class="theme-item">Recursos naturales</div>
+                        <div class="theme-item">Ambiente</div>
+                    </div>
+                    <div class="theme-column">
+                        <h4>🌾 AGRO</h4>
+                        <div class="theme-item">Agricultura</div>
+                        <div class="theme-item">Producción agropecuaria</div>
+                        <div class="theme-item">Ciencias veterinarias</div>
+                    </div>
+                    <div class="theme-column">
+                        <h4>🎓 EDUCACIÓN</h4>
+                        <div class="theme-item">Educación</div>
+                        <div class="theme-item">Sociología</div>
+                        <div class="theme-item">Políticas públicas</div>
+                    </div>
+                    <div class="theme-column">
+                        <h4>⚡ INGENIERÍA</h4>
+                        <div class="theme-item">Ingeniería eléctrica</div>
+                        <div class="theme-item">Tecnología</div>
+                        <div class="theme-item">Sistemas e innovación</div>
+                    </div>
+                    <div class="theme-column">
+                        <h4>📊 POLÍTICAS</h4>
+                        <div class="theme-item">Economía</div>
+                        <div class="theme-item">Desarrollo social</div>
+                        <div class="theme-item">Gobernanza</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: Cierre -->
+            <section id="slide9" class="slide">
+                <div class="closing-text">
+                    En el Día del Investigador Paraguayo reconocemos a las <strong>1136 personas</strong> que, desde distintas áreas del conocimiento, instituciones y territorios, sostienen la producción científica del país.
+                </div>
+                <div class="secondary-text">
+                    Los datos muestran una comunidad equilibrada en términos de género, con fuerte presencia en salud, ciencias sociales, naturales, agrícolas e ingeniería, una base amplia de investigadores en consolidación y una alta capacidad lingüística para integrarse a redes internacionales.
+                </div>
+                <div class="call-to-action">
+                    🎯 Este capital humano es clave para transformar evidencia en decisiones, innovación y desarrollo sostenible en Paraguay.
+                </div>
+            </section>
+        </div>
+
+        <!-- Controles -->
+        <div class="controls">
+            <button class="control-btn" id="prevBtn" title="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="control-btn pause" id="playPauseBtn" title="Pausar/Reanudar">
+                <i class="fas fa-pause" id="playPauseIcon"></i>
+            </button>
+            <button class="control-btn" id="nextBtn" title="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="indicators" id="indicators"></div>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
